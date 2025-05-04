@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx6apdmksge1g"]
+
+[ext_resource type="Script" path="res://Scripts/p_over.gd" id="1_wagfc"]
+[ext_resource type="AudioStream" uid="uid://0pyvwv25oj82" path="res://Assests/sounds/power_up.wav" id="2_n50js"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxmuj"]
+size = Vector2(26, 20)
+
+[node name="P_over" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_wagfc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0)
+shape = SubResource("RectangleShape2D_xxmuj")
+
+[node name="Over" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_n50js")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
